@@ -1,0 +1,14 @@
+services:
+  spotify-backoffice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: spotify-backoffice:latest
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm run dev -- --hostname 0.0.0.0
